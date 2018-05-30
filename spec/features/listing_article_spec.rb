@@ -13,7 +13,7 @@ RSpec.feature "Listing Articles" do
        expect(page).to have_link(@article1.title)
        expect(page).to have_link(@article2.title)
   end
-  
+   
     scenario "A user has no articles" do
       Article.delete_all
      visit "/"
