@@ -10,6 +10,7 @@ group :test do
 gem 'capybara','2.7.1'
 end
 
+gem 'devise'
 gem 'rake', '< 11'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
