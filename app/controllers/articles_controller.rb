@@ -14,7 +14,7 @@ end
   end
   
   def update
-      if @article.update(article_params)
+      if @article.update(article_params) 
             flash[:success]="Article has been updated"
         redirect_to @article
       else
@@ -33,6 +33,7 @@ end
   
   def create
     @article=Article.new(article_params)
+    @article.user=current_user
     if @article.save
     flash[:success]="Article has been created"
     redirect_to articles_path
