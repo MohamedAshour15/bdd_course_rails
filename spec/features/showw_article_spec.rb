@@ -32,5 +32,17 @@ expect(current_path).to eq(article_path(@article))
   expect(page).not_to have_button("Delete Article")
    expect(page).not_to have_button("Edit Article")
 end 
+
+scenario "to a signed in owner sees both the Edit and delete buttons" do
+     login_as(@john)
+visit "/"
+click_link @article.title
+expect(page).to have_content(@article.title) 
+expect(page).to have_content(@article.body) 
+expect(current_path).to eq(article_path(@article))
+  expect(page).to have_link("Delete Article")
+   expect(page).to have_link("Edit Article")
+end 
+
 end
 
