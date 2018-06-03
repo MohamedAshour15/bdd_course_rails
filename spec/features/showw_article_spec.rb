@@ -4,7 +4,6 @@ RSpec.feature "Showing an Article" do
 before do
    @john=User.create(email: "john@example.com",password:"password")
      @fred=User.create(email: "fred@example.com",password:"password")
-    login_as(@john)
 @article = Article.create(title: "The first article",
 body: "Lorem ipsum dolor sit amet, consectetur.", user: @john) 
 end
@@ -17,8 +16,8 @@ expect(page).to have_content(@article.title)
 expect(page).to have_content(@article.body) 
 expect(current_path).to eq(article_path(@article))
 
-  expect(page).not_to have_button("Delete Article")
-  expect(page).not_to have_button("Edit Article")
+  expect(page).not_to have_link("Delete Article")
+  expect(page).not_to have_link("Edit Article")
 
 end 
 
@@ -29,8 +28,8 @@ click_link @article.title
 expect(page).to have_content(@article.title) 
 expect(page).to have_content(@article.body) 
 expect(current_path).to eq(article_path(@article))
-  expect(page).not_to have_button("Delete Article")
-   expect(page).not_to have_button("Edit Article")
+  expect(page).not_to have_link("Delete Article")
+   expect(page).not_to have_link("Edit Article")
 end 
 
 scenario "to a signed in owner sees both the Edit and delete buttons" do
